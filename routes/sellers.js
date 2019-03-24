@@ -1,9 +1,9 @@
-const {Sellers} = require('../services/Sellers')
+const {sellers} = require('../services/sellers')
 
 
 const create = (req, res)=>{
     const {first_name, last_name, phone_number, email, company, token} = req.body
-    Sellers.create(first_name, last_name, phone_number, email, company, token)
+    sellers.create(first_name, last_name, phone_number, email, company, token)
     .then(() =>{
         res.json('user created') 
     })
@@ -14,7 +14,7 @@ const create = (req, res)=>{
 }
 
 const read = (req, res) => {
-    Sellers.read()
+    sellers.read()
         .then((data)=>{
         res.status(200)
         res.json(data)
@@ -25,7 +25,7 @@ const read = (req, res) => {
 }
 
 const update = (req, res) =>{
-    Sellers.update()
+    sellers.update()
     .then(_=>{
     res.status(200)
     res.json('seller updated')
@@ -37,7 +37,7 @@ const update = (req, res) =>{
 
 const remove = (req, res) =>{
     const {id} = req.body
-    Sellers.delete(id)
+    sellers.delete(id)
     .then(_=>{
     res.status(200)
     res.json('seller removed')

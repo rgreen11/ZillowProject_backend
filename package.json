@@ -7,8 +7,9 @@
     "test": "test"
   },
   "scripts": {
-    "start:local": "$(npm bin)/ nodemon index.js",
-    "test": "$(npm bin)/jest --coverage",
+    "start:local": "$(npm bin)/ nodemon index.js &",
+    "test": "$(npm bin)/jest --coverage && cat ./coverage/lcov.info | $(npm bin)/coveralls",
+    "write-coveralls": "rm -rf .coveralls.yml && echo \"repo_token:$CODE_COVERAGE_TOKEN\" >> .coveralls.yml",
     "start": "node index.js"
   },
   "author": "",
@@ -24,5 +25,23 @@
   },
   "devDependencies": {
     "nodemon": "^1.18.10"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "text",
+      "clover",
+      "html"
+    ],
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/node_modules/**",
+      "!**/vendor/**",
+      "!**/__fixtures__/**",
+      "!**/coverage/**",
+      "!index.js"
+    ]
   }
 }
