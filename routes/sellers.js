@@ -3,9 +3,6 @@ const {Sellers} = require('../services/Sellers')
 
 const create = (req, res)=>{
     const {first_name, last_name, phone_number, email, company, token} = req.body
-
-    console.log(req)
-
     Sellers.create(first_name, last_name, phone_number, email, company, token)
     .then(() =>{
         res.json('user created') 
@@ -19,6 +16,7 @@ const create = (req, res)=>{
 const read = (req, res) => {
     Sellers.read()
         .then((data)=>{
+        res.status(200)
         res.json(data)
       })
       .catch((error)=>{
@@ -28,10 +26,25 @@ const read = (req, res) => {
 
 const update = (req, res) =>{
     Sellers.update()
+    .then(_=>{
+    res.status(200)
+    res.json('seller updated')
+  })
+  .catch((error)=>{
+    return error
+  })
 }
 
 const remove = (req, res) =>{
-    Sellers.delete()
+    const {id} = req.body
+    Sellers.delete(id)
+    .then(_=>{
+    res.status(200)
+    res.json('seller removed')
+  })
+  .catch((error)=>{
+    return error
+  })
 }
 
 

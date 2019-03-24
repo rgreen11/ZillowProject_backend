@@ -9,9 +9,7 @@ const app = express();
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json());
 // routes
-app.get('/', (res, req)=>{
-    res.json('this is a test')
-})
+
 // sellers
 app.post('/seller/create', create);
 app.get('/seller/search', read);

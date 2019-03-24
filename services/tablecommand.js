@@ -1,6 +1,4 @@
-const pgp = require('pg-promise');
+const pgp = require('pg-promise')({});
 const db = pgp('postgres://localhost/zillow');
 
-module.exports = {
-    db
-}
+module.exports = {db}

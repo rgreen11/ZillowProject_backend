@@ -8,7 +8,8 @@
   },
   "scripts": {
     "start:local": "$(npm bin)/ nodemon index.js",
-    "test": "$(npm bin)/jest --coverage"
+    "test": "$(npm bin)/jest --coverage",
+    "start": "$(npm bin)/nodemon index.js"
   },
   "author": "",
   "license": "ISC",

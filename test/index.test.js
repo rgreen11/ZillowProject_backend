@@ -1,54 +1,59 @@
 const request = require('supertest')
-const {app,} = require('../app')
-jest.mock('pg-promise')
-const pg_promise = require("pg-promise")
+const {app} = require('../app')
+jest.mock('../services/tablecommand')
+jest.mock('../services/Sellers')
+// const pg_promise = require("pg-promise")
+const {Sellers} = require('../services/Sellers')
+const {buyer} =require('../services/buyer')
 
-test('calling post returning 200',done=>{
+test('calling read returning 200',done=>{
+    Sellers.read.mockImplementation(()=>{
+        return Promise.resolve()
+    })
     request(app)
-    .get('/')
+    .get('/seller/search')
     .then(response=>{
         expect(response.status).toBe(200)
         done()
     })
 })
 
-pg_promise.mockImplementation(() => {
-    return function() {
-        return {
-            any: () => Promise.resolve({'test': 1})
-        }
-    }
-})
 
-/*
-IMPLEMENT TEST!!!!
-
-jest.mock('pg-promise')
-const pg_promise = require("pg-promise")
-pg_promise.mockImplementation(() => {
-    return function() {
-        return {
-            any: () => Promise.resolve({'test': 1})
-        }
-    }
-})
-const {app,} = require('../app')
 
 test('calling POST returns 200', done => {
+    Sellers.create.mockImplementation(()=>{
+        return Promise.resolve()
+    })
     request(app)
-      .post('/')
+      .post('/seller/create')
       .then(response => {
             expect(response.status).toBe(200)
             done()
       })
 })
 
-test('calling GET returns 200', done => {
+test('calling PUT returns 200', done => {
+    Sellers.update.mockImplementation(()=>{
+        return Promise.resolve()
+    })
     request(app)
-      .get('/')
+      .put('/seller/update')
       .then(response => {
             expect(response.status).toBe(200)
             done()
       })
 })
-*/
+
+
+
+test('calling DELETE returns 200', done => {
+    Sellers.delete.mockImplementation(()=>{
+        return Promise.resolve()
+    })
+    request(app)
+      .delete('/seller/delete')
+      .then(response => {
+            expect(response.status).toBe(200)
+            done()
+      })
+})
