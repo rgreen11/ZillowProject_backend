@@ -1,8 +1,8 @@
 const {db} = require('./tablecommand')
-const Sellers = {}
+const sellers = {}
 
 
-Sellers.create = (first_name, last_name, phone_number, email, company, token) => {
+sellers.create = (first_name, last_name, phone_number, email, company, token) => {
     const sql  = `
     INSERT INTO
     sellers (first_name, last_name, phone_number, email, company, token)
@@ -10,13 +10,13 @@ Sellers.create = (first_name, last_name, phone_number, email, company, token) =>
     return db.none(sql, {first_name, last_name, phone_number, email, company, token})
 }
 
-Sellers.read = () => {
+sellers.read = () => {
     const sql = `SELECT sellers.* FROM sellers`;
     return db.any(sql)
     
 }
 
-Sellers.update = (id, first_name, last_name, phone_number, email, company) => {
+sellers.update = (id, first_name, last_name, phone_number, email, company) => {
     const sql = `
     UPDATE sellers SET
     first_name=$[first_name],
@@ -33,10 +33,10 @@ Sellers.update = (id, first_name, last_name, phone_number, email, company) => {
     // *** what you can do is ask the user if the remaining data is the same with YES / NO. If so call this api and fill in the remaining data. :)
 }
 
-Sellers.delete = (id) =>{
+sellers.delete = (id) =>{
     
     const sql = `DELETE FROM sellers WHERE id=$[id]`;
     return db.none(sql,{id})
 }
 
-module.exports = {Sellers}
+module.exports = {sellers}

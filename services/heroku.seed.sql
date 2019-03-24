@@ -31,3 +31,12 @@ CREATE TABLE buyer (
     email VARCHAR NOT NULL,
     buyer_id INT REFERENCES listings(id) 
 );
+
+INSERT INTO sellers (first_name, last_name, phone_number, email, company, token) VALUES 
+('Richard', 'Green', '123-456-7890', 'richardgreen@pursuit.org', 'Big Business', 'somenumber');
+
+INSERT INTO listings (cost, address, yearbuilt, heating, cooling, parking, numDay, type) VALUES 
+('370000', '123 Adam st','2010', 'hot', 'its brick','yes', '1', 'Buy');
+
+INSERT INTO buyer (fullname, email) VALUES 
+('some one', 'mike@abc.com');
