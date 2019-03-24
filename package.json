@@ -1,0 +1,24 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start:local": "$(npm bin)/ nodemon index.js",
+    "test": "$(npm bin)/jest --coverage"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "coveralls": "^3.0.3",
+    "express": "^4.16.4",
+    "jest": "^24.5.0",
+    "pg-promise": "^8.6.4",
+    "supertest": "^4.0.2"
+  }
+}
