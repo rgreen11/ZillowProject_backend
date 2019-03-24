@@ -9,7 +9,7 @@
   "scripts": {
     "start:local": "$(npm bin)/ nodemon index.js",
     "test": "$(npm bin)/jest --coverage",
-    "start": "$(npm bin)/nodemon index.js"
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",
@@ -21,5 +21,8 @@
     "jest": "^24.5.0",
     "pg-promise": "^8.6.4",
     "supertest": "^4.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
   }
 }
