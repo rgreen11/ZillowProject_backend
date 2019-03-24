@@ -39,7 +39,6 @@ return res.json({err:error})
 
 const removeBuyer = (req, res) =>{
     const {id} = req.body;
-    console.log(id)
     buyer.delete(id)
     .then(_=>{
     return  res.json({'listing': 'was removed'})
@@ -47,7 +46,6 @@ const removeBuyer = (req, res) =>{
       .catch((error)=>{
     return res.json({err:error})
       })
-
 }
 
 

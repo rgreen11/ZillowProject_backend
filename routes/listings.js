@@ -39,7 +39,6 @@ return res.json({err:error})
 
 const removeListing = (req, res) =>{
     const {id} = req.body;
-    console.log(id)
     listings.delete(id)
     .then(_=>{
     return  res.json({'listing': 'was removed'})

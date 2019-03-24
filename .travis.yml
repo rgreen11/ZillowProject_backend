@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+  - "11.10.1"
+install:
+  - npm install
+before_script:
+  - export COVERALLS_TOKEN=$COVERALLS_TOKEN
+script:
+  - npm run write-coveralls
+  - npm test
+deploy:
+  provider: heroku
+  api_key: $HEROKU_KEY
+  app: project-zillow 
+  on: master 
+  strategy: git
