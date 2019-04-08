@@ -2,8 +2,8 @@ const {sellers} = require('../services/sellers')
 
 
 const create = (req, res)=>{
-    const {first_name, last_name, phone_number, email, company, token} = req.body
-    sellers.create(first_name, last_name, phone_number, email, company, token)
+    const {first_name, last_name, phone_number, email, company, token, uid} = req.body
+    sellers.create(first_name, last_name, phone_number, email, company, token, uid)
     .then(() =>{
         res.json('user created') 
     })
@@ -16,10 +16,12 @@ const create = (req, res)=>{
 const read = (req, res) => {
     sellers.read()
         .then((data)=>{
-        res.status(200)
-        res.json(data)
+        res.status(200).json({
+          data: data
+        })
       })
       .catch((error)=>{
+        console.log(error)
         return error
       })
 }

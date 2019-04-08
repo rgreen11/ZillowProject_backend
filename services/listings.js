@@ -2,12 +2,12 @@ const {db} = require('./tablecommand')
 const listings = {}
 
 
-listings.create = (cost, address, yearbuilt, heating, cooling, parking, numday, type, listing_id) => {
+listings.create = (sellers_id, cost, address, yearbuilt, heating, cooling, parking, numDay, type, url) => {
     const sql  = `
     INSERT INTO
-    listings (first_name, last_name, phone_number, email, company, token)
-    VALUES ($[cost], $[address], $[yearbuilt], $[heating], $[cooling], $[parking], $[numday], $[type], $[listing_id])`
-    return db.none(sql, {cost, address, yearbuilt, heating, cooling, parking, numday, type, listing_id})
+    listings (sellers_id, cost, address, yearbuilt, heating, cooling, parking, numDay, type, url)
+    VALUES ($[sellers_id], $[cost], $[address], $[yearbuilt], $[heating], $[cooling], $[parking], $[numDay], $[type], $[url])`
+    return db.none(sql, {sellers_id, cost, address, yearbuilt, heating, cooling, parking, numDay, type, url})
 }
 
 listings.read = () => {
@@ -38,7 +38,6 @@ listings.update = (id, cost, address, yearbuilt, heating, cooling, parking, numd
 }
 
 listings.delete = (id) =>{
-    
     const sql = `DELETE FROM listings WHERE id=$[id]`;
     return db.none(sql,{id})
 }

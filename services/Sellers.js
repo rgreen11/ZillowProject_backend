@@ -2,12 +2,12 @@ const {db} = require('./tablecommand')
 const sellers = {}
 
 
-sellers.create = (first_name, last_name, phone_number, email, company, token) => {
+sellers.create = (first_name, last_name, phone_number, email, company, token, uid) => {
     const sql  = `
     INSERT INTO
-    sellers (first_name, last_name, phone_number, email, company, token)
-    VALUES ($[first_name], $[last_name], $[phone_number], $[email], $[company], $[token])`
-    return db.none(sql, {first_name, last_name, phone_number, email, company, token})
+    sellers (first_name, last_name, phone_number, email, company, token, uid)
+    VALUES ($[first_name], $[last_name], $[phone_number], $[email], $[company], $[token], $[uid])`
+    return db.none(sql, {first_name, last_name, phone_number, email, company, token, uid})
 }
 
 sellers.read = () => {
