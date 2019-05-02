@@ -3,3 +3,4 @@ node_modules/
 .coveralls.yml
 firebase.js
 firebase_key.json
+Zillow/*
